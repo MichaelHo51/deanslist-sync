@@ -100,14 +100,14 @@ def main(school, queries):
             if endpt_data:
                 if query_params_fmt:
                     data_filename = (
-                        f"{endpt_name}_{school_name}_{query_params_fmt}.json.gz"
+                        f"{endpt_name}_{school_name}_{query_params_fmt}.json"
                     )
                 else:
-                    data_filename = f"{endpt_name}_{school_name}.json.gz"
+                    data_filename = f"{endpt_name}_{school_name}.json"
                 data_filepath = data_path / data_filename
 
                 ## save to json.gz
-                with gzip.open(data_filepath, "wt", encoding="utf-8") as f:
+                with open(data_filepath, "wt", encoding="utf-8") as f:
                     json.dump(endpt_data, f)
                 print(f"\t\tSaved to {'/'.join(data_filepath.parts[-5:])}!")
 
